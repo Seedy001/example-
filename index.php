@@ -20,14 +20,15 @@
                 $email = mysqli_real_escape_string($con,$_POST['Email']);
                 $password = mysqli_real_escape_string($con,$_POST['password']);
 
-                $result = mysqli_query($con,"SELECT * FROM users WHERE Email='$email'AND Password = '$password'") or die("select error");
+                $result = mysqli_query($con,"SELECT * FROM users") or die("select error");
                 $row = mysqli_fetch_array($result);
 
                 if(is_array($row) && !empty($row)){
+                    echo($row);
                     $_SESSION["valid"] = $row["Email"];
-                    $_SESSION["username"] = $row["username"];
-                    $_SESSION["permanent"] = $row["permanent"];
-                    $_SESSION["id"] = $row["Id"];
+                    $_SESSION["username"] = $row["Username"];
+                    $_SESSION["permanent"] = $row["Permanent"];
+                    $_SESSION["id"] = $row["id"];
                 }else{
                     echo "<div class='message'>
                           <p> Wrong Username or Password </p> 

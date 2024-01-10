@@ -2,10 +2,6 @@
     session_start();
 
     include("php/config.php");
-    if(isset($_SESSION["valid"])) {
-        header("Location: index.php");
-    }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,14 +20,14 @@
             <div class="right-links">
 
             <?php
-            $id = $_SESSION['Id'];
+            $id = $_SESSION['id'];
             $query = mysqli_query($con,"SELECT*FROM users WHERE id=$id");
 
             while($result = mysqli_fetch_assoc($query)) {
                 $res_Uname = $result["Username"];
                 $res_Email = $result["Email"];
-                $res_permanent_code = $result["permanent"];
-                $res_id = $result["Id"];
+                $res_permanent_code = $result["Permanent_code"];
+                $res_id = $result["id"];
             }
                 echo " <a href='edit.php?Id=$res_id'>Change Profile</a>"
             ?>
